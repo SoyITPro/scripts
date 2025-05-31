@@ -1,3 +1,4 @@
+#Valida en los Path si existen archivos .vbs
 
 $pathsToScan = @("C:\Users", "C:\ProgramData", "C:\Scripts")
 $logPath = "C:\VBSScriptScan\VbsFiles_$(hostname).csv"
