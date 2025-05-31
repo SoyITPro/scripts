@@ -1,6 +1,7 @@
 Este repositorio contiene una colección de scripts de PowerShell útiles para administración de sistemas, automatización de tareas y soluciones IT. Los scripts están organizados por categorías y listos para implementar en entornos Windows.
 
 🚀 Características
+
 🛠️ Scripts listos para producción
 
 📝 Documentación clara para cada script
@@ -59,6 +60,7 @@ Haz push a la rama (git push origin mi-nueva-funcionalidad)
 Abre un Pull Request
 
 📌 Mejores Prácticas para Scripts
+
 Usar nombres descriptivos en inglés
 
 Incluir comentarios y ayuda
@@ -72,6 +74,4 @@ Documentar requisitos y parámetros
 ⚠️ Advertencia
 Ejecuta estos scripts bajo tu propio riesgo. Siempre revisa el código antes de ejecutarlo en sistemas de producción.
 
-📄 Licencia
-Este proyecto está bajo la licencia MIT.
 
