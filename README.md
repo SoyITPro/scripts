@@ -10,16 +10,6 @@ Este repositorio contiene una colección de scripts de PowerShell útiles para a
 
 ✔️ Probados en Windows 10/11 y Windows Server
 
-📁 Estructura del Directorio
-/scripts/
-│
-├── /system-admin/          # Scripts de administración de sistemas
-├── /file-management/       # Manejo de archivos y directorios
-├── /monitoring/           # Monitoreo y logging
-├── /security/             # Seguridad y hardening
-├── /active-directory/     # AD y gestión de usuarios
-├── /utilities/            # Herramientas varias
-└── /examples/             # Ejemplos y plantillas
 
 ⚙️ Requisitos
 PowerShell 5.1 o superior
