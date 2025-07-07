@@ -1,4 +1,11 @@
-﻿#RootCertificate
+﻿<#
+.SYNOPSIS
+    Crea certificados para usar en VPNs de Azure.
+.DESCRIPTION
+    Utiliza para crear el root certificate y client para las conexiones Punto a sitio de VPN en redes Azure.
+#>
+
+#RootCertificate
 $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 -Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
 -HashAlgorithm sha256 -KeyLength 2048 `
