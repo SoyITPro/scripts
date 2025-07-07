@@ -11,7 +11,7 @@ Este repositorio contiene una colección de scripts de PowerShell útiles para a
 * ✔️ Probados en diferentes versiones de Windows Cliente (10,11) y Windows Server (2012,2016,2019,2022,2025)
 
 
-### ⚙️ Requisitos
+## ⚙️ Requisitos
 * PowerShell 5.1 o superior
 
 * Módulos requeridos especificados en cada script
@@ -36,7 +36,7 @@ Antes de ejecutar cualquier script, revisa el código y ajusta los parámetros s
 
 powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-🤝 Contribuciones
+## 🤝 Contribuciones
 ¡Contribuciones son bienvenidas! Por favor:
 
 Haz un fork del repositorio
@@ -61,7 +61,8 @@ Abre un Pull Request
 
 * Documentar requisitos y parámetros
 
-# ⚠️ Advertencia
-> [!CAUTION] Ejecuta estos scripts bajo tu propio riesgo. Siempre revisa el código antes de ejecutarlo en sistemas de producción.
+## ⚠️ Advertencia
+> **!CAUTION** 
+> Ejecuta estos scripts bajo tu propio riesgo. Siempre revisa el código antes de ejecutarlo en sistemas de producción.
 
 
