@@ -8,7 +8,7 @@ Este repositorio contiene una colección de scripts de PowerShell útiles para a
 
 🔍 Ejemplos de uso
 
-✔️ Probados en Windows 10/11 y Windows Server
+✔️ Probados en diferentes versiones de Windows Cliente (10,11) y Windows Server (2012,2016,2019,2022,2025)
 
 
 ⚙️ Requisitos
