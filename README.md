@@ -40,6 +40,6 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 ## ⚠️ Advertencia
 
 > [!CAUTION]
-> Ejecuta estos Scripts bajo tu propio riesgo. Siempre revisa el código antes de ejecutarlo en sistemas de producción.
+> Ejecuta estos Scripts bajo tu propio riesgo. Siempre revisa el código antes de ejecutarlo en sistemas de producción, crea laboratorios.
 
 
