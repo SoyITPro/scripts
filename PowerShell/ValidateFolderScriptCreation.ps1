@@ -1,3 +1,14 @@
+<#
+.SYNOPSIS
+    Descripción general del script.
+
+.DESCRIPTION
+    Realiza la validación de una carpeta dentro de un Script y sino existe la crea en el Path que le especifiquen.
+
+.AUTHOR
+    @SoyITPro
+#>
+
 $folderPath = "C:\Temp"
 
 #verificar la carpeta
