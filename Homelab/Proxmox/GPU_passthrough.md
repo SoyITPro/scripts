@@ -80,6 +80,7 @@ Archivo **`/etc/modprobe.d/vfio.conf`**:
 ```bash
 options vfio-pci ids=10de:1f02,10de:10f9,10de:1ada,10de:1adb disable_vga=1
 ```
+Cambiar por los grupos de tu implementación
 
 ## Actualiza initramfs y reinicia:
 
