@@ -1,73 +1,118 @@
-🧠 ¿Qué es IOMMU?
-IOMMU (Input-Output Memory Management Unit) es un componente de hardware que actúa como puente entre los dispositivos de entrada/salida (como tarjetas gráficas o de red) y la memoria principal del sistema. Permite asignar dispositivos directamente a máquinas virtuales, mejorando el rendimiento y la seguridad.
+# GPU Passthrough en Proxmox VE
 
-⚙️ Activar IOMMU en Proxmox
-1. Habilitar IOMMU en el kernel (GRUB)
-Edita /etc/default/grub y modifica la línea GRUB_CMDLINE_LINUX_DEFAULT:
+## Que es IOMMU
 
-Intel:
+### **Es un componente de hardware que actúa como un puente entre los dispositivos de E/S (como tarjetas gráficas o de red) y la memoria principal del sistema**
 
-bash
+En el host Proxmox, ejecuta:
+
+# Habilitar IOMMU en el kernel (GRUB)
+
+Edita `/etc/default/grub` y modifica la línea `GRUB_CMDLINE_LINUX_DEFAULT` añadiendo el parámetro correspondiente:
+
+- Intel:
+
+```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"
-AMD:
+```
 
-bash
+- AMD:
+
+```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"
-Aplica cambios y reinicia:
 
-bash
+```
+
+Aplicar y reiniciar:
+
+```bash
 update-grub
 update-initramfs -u -k all
 reboot
-2. Verificar IOMMU en el host
-bash
+
+```
+
+# Verificar IOMMU en el host (Proxmox)
+
+```bash
 # Verificar mensajes IOMMU
 dmesg | grep -i iommu
-
-# Listar dispositivos NVIDIA (+ IDs)
+# Lista dispositivos NVIDIA (+ IDs)
 lspci -nnk | grep -iA3 nvidia
-
-# Mostrar grupos IOMMU
+# Mostrar grupos IOMMU (útil para ver qué va junto)
 for g in /sys/kernel/iommu_groups/*; do
   echo "IOMMU Group ${g##*/}"
   ls -l $g/devices
 done
-Tras reiniciar, verifica el driver:
 
-bash
+```
+
+Verifica tras reinicio
+
+```bash
 lspci -k -s 02:00.0
 # Debe decir: Kernel driver in use: vfio-pci
-🛡️ Preparar VFIO y evitar drivers del host
-1. Blacklist de drivers
-Edita /etc/modprobe.d/blacklist.conf:
+```
 
-bash
+# Preparar vfio + evitar drivers del host
+
+1. Crea/edita `/etc/modprobe.d/blacklist.conf` (evitar que host cargue drivers):
+
+```bash
 echo "blacklist nouveau" >> /etc/modprobe.d/blacklist.conf
 echo "blacklist nvidia" >> /etc/modprobe.d/blacklist.conf
-2. Añadir módulos VFIO en /etc/modules
-bash
+
+```
+
+## Añade módulos para VFIO en `/etc/modules`:
+
+```bash
 vfio
 vfio_iommu_type1
 vfio_pci
-3. Ligar GPU a vfio-pci
-Archivo /etc/modprobe.d/vfio.conf:
 
-bash
+```
+
+## Ligar la GPU a vfio-pci
+
+Archivo **`/etc/modprobe.d/vfio.conf`**:
+
+```bash
 options vfio-pci ids=10de:1f02,10de:10f9,10de:1ada,10de:1adb disable_vga=1
-Actualiza y reinicia:
+```
 
-bash
+## Actualiza initramfs y reinicia:
+
+```bash
 update-initramfs -u -k all
 reboot
-4. Confirmar que la GPU usa vfio-pci
-bash
-lspci -k -s 01:00.0
-# Debe mostrar: Kernel driver in use: vfio-pci
-🖥️ Crear y preparar la VM en Proxmox
-VM ID: 100
 
-BIOS: OVMF (UEFI)
+```
 
-Machine: q35
+## Después del reinicio, confirma que la GPU esté ligada a `vfio-pci`:
 
-⚠️ Asegúrate de que la VM esté configurada para usar UEFI y que el dispositivo PCI esté asignado correctamente desde la interfaz de Proxmox.
+```bash
+lspci -k -s 01:00.0   # sustituye la dirección PCI
+# debe mostrar "Kernel driver in use: vfio-pci"
+
+```
+
+## Crear / preparar la VM en Proxmox
+
+Suponiendo que tu VM es ID **100** y usas BIOS **OVMF (UEFI)** y **Machine: q35**:
+
+```bash
+# Ocultar hypervisor para evitar Code 43
+qm set 100 -cpu host,hidden=1
+
+# Pasar GPU (VGA)
+qm set 100 -hostpci0 02:00.0,pcie=1,x-vga=1
+
+# Pasar Audio HDMI
+qm set 100 -hostpci1 02:00.1
+
+# (opcional) pasar también USB controllers
+qm set 100 -hostpci2 02:00.2
+qm set 100 -hostpci3 02:00.3
+ 
+```
