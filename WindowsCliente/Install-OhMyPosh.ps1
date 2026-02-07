@@ -96,52 +96,54 @@ Set-Content -Path $PROFILE -Value $ohMyPoshConfig
 Write-Host "`n=== Configurando la Terminal de Windows ===" -ForegroundColor Cyan
 # Configuración JSON para la Terminal de Windows
 $terminalSettings = @"
+
 {
-    "profiles": {
-        "defaults": {
-            "font": {
-                "face": "MesloLGL Nerd Font",
-                "size": 15
-            },
-            "opacity": 85,
-            "useAcrylic": true
-        },
-        "list": [
-            {
-                "commandline": "powershell.exe -NoExit -Command \",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "PowerShell Personalizado",
-                "startingDirectory": "%USERPROFILE%"
-            }
-        ]
+  "profiles": {
+    "defaults": {
+      "font": {
+        "face": "MesloLGL Nerd Font",
+        "size": 15
+      },
+      "opacity": 85,
+      "useAcrylic": true
     },
-    "schemes": [
-        {
-            "background": "#012456",
-            "black": "#0C0C0C",
-            "blue": "#0037DA",
-            "brightBlack": "#767676",
-            "brightBlue": "#3B78FF",
-            "brightCyan": "#61D6D6",
-            "brightGreen": "#16C60C",
-            "brightPurple": "#B4009E",
-            "brightRed": "#E74856",
-            "brightWhite": "#F2F2F2",
-            "brightYellow": "#F9F1A5",
-            "cyan": "#3A96DD",
-            "foreground": "#CCCCCC",
-            "green": "#13A10E",
-            "name": "Custom Blue",
-            "purple": "#881798",
-            "red": "#C50F1F",
-            "white": "#CCCCCC",
-            "yellow": "#C19C00"
-        }
-    ],
-    "theme": "dark"
+    "list": [
+      {
+        "commandline": "powershell.exe -NoExit -Command \"Set-Location $env:USERPROFILE\"",
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "name": "PowerShell Personalizado",
+        "startingDirectory": "%USERPROFILE%"
+      }
+    ]
+  },
+  "schemes": [
+    {
+      "background": "#012456",
+      "black": "#0C0C0C",
+      "blue": "#0037DA",
+      "brightBlack": "#767676",
+      "brightBlue": "#3B78FF",
+      "brightCyan": "#61D6D6",
+      "brightGreen": "#16C60C",
+      "brightPurple": "#B4009E",
+      "brightRed": "#E74856",
+      "brightWhite": "#F2F2F2",
+      "brightYellow": "#F9F1A5",
+      "cyan": "#3A96DD",
+      "foreground": "#CCCCCC",
+      "green": "#13A10E",
+      "name": "Custom Blue",
+      "purple": "#881798",
+      "red": "#C50F1F",
+      "white": "#CCCCCC",
+      "yellow": "#C19C00"
+    }
+  ],
+  "theme": "dark"
 }
 "@
+
 
 # Guardar la configuración de la terminal
 $terminalSettingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
