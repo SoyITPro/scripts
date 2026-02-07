@@ -68,7 +68,7 @@ if (-not (Test-Path $PROFILE)) {
 # Configurar Oh My Posh en el perfil
 $ohMyPoshConfig = @"
 # Oh My Posh setup
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/jandedobbeleer.omp.json' | Invoke-Expression
 
 # Aliases útiles
 Set-Alias -Name ll -Value Get-ChildItem
