@@ -1,4 +1,15 @@
+
 # 🧩 Personalizar la instalación de Windows 11 con un archivo `autounattend.xml`
+
+<!-- Vídeo introductorio -->
+<p align="center">
+	<a href="https://youtu.be/HEZhCxXUgYM">
+		<img src="https://img.youtube.com/vi/HEZhCxXUgYM/maxresdefault.jpg" alt="Vídeo: Instalación Windows 11" style="max-width:100%;height:auto;">
+	</a>
+</p>
+
+> Vídeo Completo: https://youtu.be/HEZhCxXUgYM
+
 
 En este artículo aprenderás a automatizar la instalación de **Windows 11** mediante un archivo de respuesta (`autounattend.xml`) y a crear una **ISO personalizada** con la herramienta **oscdimg**, ideal para entornos de laboratorio, Hyper-V, Proxmox o VMware.
 
