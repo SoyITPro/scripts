@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: joplin
+      POSTGRES_USER: joplin
+      POSTGRES_PASSWORD: CambiaEstaClaveSegura
+    volumes:
+      - joplin_postgres_data:/var/lib/postgresql/data
+    networks:
+      - joplin_internal
+
+  app:
+    image: joplin/server:latest
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "22300:22300"
+    environment:
+      APP_PORT: 22300
+      APP_BASE_URL: http://TU_IP:22300
+      DB_CLIENT: pg
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_DATABASE: joplin
+      POSTGRES_USER: joplin
+      POSTGRES_PASSWORD: CambiaEstaClaveSegura
+    networks:
+      - joplin_internal
+
+volumes:
+  joplin_postgres_data:
+
+networks:
+  joplin_internal:
+    driver: bridge
