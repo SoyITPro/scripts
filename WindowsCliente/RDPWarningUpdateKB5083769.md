@@ -54,3 +54,10 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Terminal Services\Client]
 "RedirectionWarningDialogVersion"=dword:00000001
+```
+
+
+## 📹 Video completo
+
+[![Ver video en YouTube](https://img.youtube.com/vi/LqGEt_u1oMc/maxresdefault.jpg)](https://youtu.be/LqGEt_u1oMc)
+
