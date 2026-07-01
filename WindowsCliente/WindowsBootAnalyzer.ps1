@@ -1,6 +1,8 @@
 # ==========================================
 # Windows Boot Analyzer
 # ==========================================
+# Analiza el tiempo en que se demora en arrancar Windows.
+
 
 Write-Host ""
 Write-Host "Analizando último arranque (PRO++)..." -ForegroundColor Cyan
